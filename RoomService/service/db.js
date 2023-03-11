@@ -3,6 +3,7 @@ const Mongoose = require("mongoose");
 
 // state connection string via mongoose
 mongoose.connect('mongodb://127.0.0.1:27017/room',{
+   
     useNewUrlParser:true //avoid unwanted warning
 })
 
@@ -11,6 +12,7 @@ const Room = mongoose.model('Room',{
     //schema creation
     id:Number,
     title:String,
+    location:String,
     price:Number,
     description:String,
     category:String,
@@ -37,7 +39,52 @@ const User=mongoose.model('User',{  //model creation (User)
    
 })
 
+//create wishlist new collection in mongodb - create a model
+const Wishlist=mongoose.model('wishlist',{
+    id:Number,
+    title:String,
+    location:String,
+    price:Number,
+    description:String,
+    category:String,
+    image:String,
+    
+    rating:Number
+})
+// const Mybooking=mongoose.model('mybooking',{
+//     id:Number,
+//     title:String,
+//     location:String,
+//     price:Number
+// })
+
+
+// const Booking=mongoose.model('bookings',{  
+//     // a schema is to be created
+
+//     name:String,
+//     email:String,
+//     mobno:Number
+//     // checkin:Date,
+//     // checkout:Date
+   
+// })
+
+const Sample = mongoose.model('samples', {
+    name:String,
+    email:String,
+    mobno:Number,
+    title:String,
+    checkin:String,
+    checkout:String
+})
+
 module.exports={
         User,
-        Room
+        Room,
+        Wishlist,
+
+        Sample
+        // Mybooking
+        
     }

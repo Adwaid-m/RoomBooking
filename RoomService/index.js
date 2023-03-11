@@ -56,3 +56,71 @@ app.get('/all-rooms',(req,res)=>{
         }
     )
 })
+
+app.get('/viewmore/:id',(req,res)=>{
+    dataService.viewmore(req.params.id).then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+app.get('/booking/:id',(req,res)=>{
+    dataService.booking(req.params.id).then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+//API call to addtowishlist
+app.post('/addtowishlist',(req,res)=>{
+    dataService.addtowishlist(req.body.id,req.body.title,req.body.location,req.body.price,req.body.image,req.body.description).then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+// //API call to addtomybooking
+// app.post('/addtomybooking',(req,res)=>{
+//     dataService.addtomybooking(req.body.id,req.body.title,req.body.location,req.body.price).then(
+//         result=>{
+//             res.status(result.statusCode).json(result)
+//         }
+//     )
+// })
+//API call to get wishlist
+app.get('/getwishlist',(req,res)=>{
+    dataService.getwishlist().then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+//API call to get delete wishlist
+app.delete('/deletewish/:id',(req,res)=>{
+    dataService.deletewish(req.params.id).then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+// app.post('/bookdetails',(req,res)=>{
+//     dataService.register(req.body.name,req.body.email,req.body.mobno,req.body.checkin,req.body.checkout).then(
+//         result=>{
+//             res.status(result.statusCode).json(result)
+//         }
+//     )
+// })
+
+//sample
+app.post('/sample',(req,res)=>{
+    dataService.sample(req.body.id,req.body.name, req.body.email, req.body.mobno,req.body.checkin,req.body.checkout).then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
